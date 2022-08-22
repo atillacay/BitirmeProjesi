@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body{
+  color: #ffffff;
+}
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+a:hover {
+  color: #fff;
+}
+ul {
+  list-style-type: none;
+}
+.error-message {
+  color: red;
+}
+.success-message {
+  color: green;
+}
+.loginForm {
+  max-width: 500px;
+}
+/**
+* Navbar
+*/
+.logo {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+}
+.mobile-menu a {
+  text-decoration: none;
+  color: rgb(255, 254, 254);
+}
+/*
+  Doc Management & Profile & Users header
+*/
+.profile {
+  margin: 30px 0;
+  padding: 10px 50px;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: start;
+  text-align: start;
+}
+.profile p{
+  margin-top: 15px;
+}
+.profile h5{
+  font-size: 22px;
+}
+.profile-info {
+  line-height: 20px;
+  display: flex;
+  
+  justify-content: space-between;
+}
+/*
+  Profile
+*/
+.profile-page {
+  flex-direction: row;
+  line-height: 15px;
+  
+}
+.email {
+  text-transform: lowercase;
+}
+.avatar {
+  border: 1px solid rgb(255, 255, 255);
+  height: 100%;
+  margin-bottom: 25px;
+}
+.card-body h6{
+  margin-top: 10px;
+}
+.add-doc {
+  display: inline-block;
+  margin:auto;
+  background-color: #E71D36!important;
+  border-radius: 10px;
+  z-index: 1000;
+}
+.add-button {
+  border-radius: 50%;
+}
+
+
+.doc-viewer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+#pdf-download {
+  display: none;
+}
+.approveDoc {
+  padding: 5px;
+}
+.approve-btn {
+  margin: 15px 30px;
+}
+/*Users Table*/
+.usersTable{
+  width: 100%;
+  height: 25vh;
+  overflow: hidden;
+  padding: 10px;
+}
+.usersTable tr,.usersTable td, .usersTable th,.usersTable a{
+  color : #282828!important;
+  
+
+}
+.usersTable tr,td,th{
+  border: 1px solid #282828 ;
+  padding: 8px 0px 8px 0px ; 
+  padding: 0px 4px 0px 4px;
+}
+.usersTable th{
+  height: 50px;
+  text-align: center;
+}
+/*Modal*/
+
+.modal-backdrop{
+  background-color: transparent;
+}
+.modal-content{
+  border: 1px solid #E71D36;
+}
