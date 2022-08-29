@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getUserDetails } from "../../features/userListSlice";
@@ -8,7 +7,6 @@ import { logout } from ".././../features/loginLogoutSlice";
 import pdficon from "../../pdficon.png";
 
 function SingleUser() {
-  const baseUrl = process.env.REACT_APP_API_BASE_URL;
   const userDetails = useSelector((state) => state.singleUser);
   const docDetails = useSelector((state) => state.singleUser.docs);
   const dispatch = useDispatch();
@@ -33,8 +31,6 @@ function SingleUser() {
         return item.DocUser.isApproved === false;
       })
     : "";
-
-  console.log(approveDocs);
   return (
     <div className="container">
       <div className="row">
@@ -44,7 +40,7 @@ function SingleUser() {
           ) : (
             <div className="row profile">
               <div className="col-sm-4 col-md-4">
-                <div className="">
+                <div>
                   <h5>Profile Info</h5>
                   <p>
                     Name: <span>{userDetails.name}</span>
@@ -64,7 +60,7 @@ function SingleUser() {
                 </div>
               </div>
               <div className="col-sm-4 col-md-4">
-                <div className="">
+                <div>
                   <h5>Received Docs</h5>
                   <p>
                     Total: <span>{docDetails ? docDetails.length : ""}</span>
@@ -126,7 +122,7 @@ function SingleUser() {
         </div>
       </div>
       <div className="row">
-        <dic classNamecol>
+        <div className="col">
           <div className="text-center">
             <h6>Approved Docs</h6>
             <div className="my-[20px] flex justify-between sm:justify-center md:justify-center flex-wrap rounded-lg p-2 shadow-[0_0px_15px_0px_rgba(46,196,182)] mb-5">
@@ -163,7 +159,7 @@ function SingleUser() {
                 : ""}
             </div>
           </div>
-        </dic>
+        </div>
       </div>
     </div>
   );

@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsers } from "../../features/userListSlice";
-import { Container, Row, Col } from "react-bootstrap";
 import { logout } from "../../features/loginLogoutSlice";
-
 
 function Users() {
   const dispatch = useDispatch();
@@ -21,8 +19,8 @@ function Users() {
 
   return (
     <div className=" container min-h-screen -mt-[75px] lg:pt-[100px]">
-      <Row>
-        <Col>
+      <div className="row">
+        <div className="col">
           <h1>Users</h1>
           <ul>
             {loading === true ? (
@@ -31,8 +29,8 @@ function Users() {
               users.map((user) => <li key={user.id}>{user.name}</li>)
             )}
           </ul>
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 }

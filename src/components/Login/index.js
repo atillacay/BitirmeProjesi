@@ -1,9 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { login } from "../../features/loginLogoutSlice";
 import { LockClosedIcon } from "@heroicons/react/solid";
-import logo from "../../logo.svg";
 
 function Login() {
   const navigate = useNavigate();
@@ -47,7 +46,7 @@ function Login() {
                     type="email"
                     autoComplete="email"
                     required
-                    className="appearance-none text-[#282828] rounded-none relative block w-full px-3 py-2 border text-gray-900 rounded-t-mdsm:text-sm"
+                    className="appearance-none text-[#282828] rounded-none relative block w-full px-3 py-2 border rounded-t-mdsm:text-sm"
                     placeholder="Email address"
                   />
                 </div>
@@ -73,21 +72,15 @@ function Login() {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                    className="h-4 w-4  rounded"
                   />
-                  <label
-                    htmlFor="remember-me"
-                    className="ml-2 block text-sm text-indigo-600 hover:text-indigo-500"
-                  >
+                  <label htmlFor="remember-me" className="ml-2 block text-sm ">
                     Remember me
                   </label>
                 </div>
 
                 <div className="text-sm">
-                  <a
-                    href="/forgotpassword"
-                    className="font-medium text-indigo-600 hover:text-indigo-500"
-                  >
+                  <a href="/forgotpassword" className="font-medium ">
                     Forgot your password?
                   </a>
                 </div>
@@ -96,13 +89,10 @@ function Login() {
               <div>
                 <button
                   type="submit"
-                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                    <LockClosedIcon
-                      className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
-                      aria-hidden="true"
-                    />
+                    <LockClosedIcon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   Sign in
                 </button>
