@@ -50,7 +50,7 @@ function Profile() {
   };
 
   return (
-    <div className="container min-h-screen __sm:mt-[200px] ">
+    <div className="container h-screen __lg:mt-[100px] __sm:mt-[200px] ">
       <div className="row">
         <div className="col-sm-12">
           {profileData.isLoading === "loading" ? (
@@ -147,18 +147,14 @@ function Profile() {
                           search: `?docId=${doc.id}`,
                         }}
                       >
-                        <Link
-                          to="#"
-                          type="button"
-                          className="text-white bg-blue-900 font-medium rounded-lg text-sm py-2.5 text-center inline-flex items-center "
-                        >
+                        <span className="text-white bg-blue-900 font-medium rounded-lg text-sm py-2.5 text-center inline-flex items-center ">
                           <img
                             className="w-10 h-13 ml-2 mr-3"
                             src={pdficon}
                             alt=""
                           />
                           <span>{doc.name}</span>
-                        </Link>
+                        </span>
                       </Link>
                       <div className="">
                         <h6>Shared with: {doc.DocUsers.length}</h6>

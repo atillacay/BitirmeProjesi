@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Profile from "./components/Profile";
@@ -17,14 +17,18 @@ import ChangePassword from "./components/ChangePass";
 import AboutUs from "./components/AboutUs";
 
 function App() {
+  const [navbar, setNavbar] = useState(false);
   const docs = useSelector((state) => state.loggedInUser.receivedDocs);
   return (
     <div className="bg-koyu">
       <div className="container">
         <div className="row">
-          <Navigation />
+          <Navigation navbar={navbar} setNavbar={setNavbar} />
         </div>
-        <div className=" row -mt-[98px] lg:pt-[75px]">
+        <div
+          onClick={() => setNavbar(false)}
+          className=" row -mt-[98px] lg:pt-[75px]"
+        >
           {/*   <Col
           lg={2}
           className="bg-koyu drop-shadow-[0_5px_5px_rgba(255,255,255,0.25)] d-lg-block d-none m-0 p-0 sidebar"

@@ -12,7 +12,6 @@ function DocManagement() {
   const myApprovals = useSelector((state) => state.loggedInUser.myApprovals);
   const receivedDocs = useSelector((state) => state.loggedInUser.receivedDocs);
   const myPendings = useSelector((state) => state.loggedInUser.myPendings);
-  console.log(myPendings);
 
   const dispatch = useDispatch();
 
@@ -20,8 +19,8 @@ function DocManagement() {
     dispatch(userProfile(authorization));
   }, []);
   return (
-    <div className=" container min-h-screen -mt-[75px] lg:pt-[100px]">
-      <div className="row __sm:mt-[200px]">
+    <div className=" container min-h-screen -mt-[75px] ">
+      <div className="row __sm:mt-[200px] lg:mt-[100px]">
         <div className="col-sm-12">
           {isLoading === "loading" ? (
             <LoadingSpinner />

@@ -7,8 +7,8 @@ import twitter from "../../5282551_tweet_twitter_twitter logo_icon.png";
 const AboutUs = () => {
   return (
     <div className="container">
-      <div className="row sm:mt-[200] __lg:mt-[100px] __sm:mt-[100px]">
-        <div className="col flex flex-wrap items-center">
+      <div className="row -mt-[75px] ">
+        <div className="col __lg:mt-[100px] __sm:mt-[200px] flex flex-wrap items-center">
           <div className="col-lg-4 p-8 ">
             <img
               src="https://thumbs.dreamstime.com/b/conception-bleue-d-illustration-du-fond-de-l-ic%C3%B4ne-abr%C3%A9g%C3%A9-pages-document-isol%C3%A9-sur-la-abstraite-167325917.jpg"

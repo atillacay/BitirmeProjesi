@@ -19,11 +19,11 @@ function UserList() {
       });
   }, []);
   return (
-    <div className=" container h-screen __sm:mt-[200px] lg:pt-[100px]">
-      <div className="row text-2xl  ">
-        <h1 className="">User List</h1>
-      </div>
-      <div className=" row mt-4 ">
+    <div className=" container h-screen -mt-[75px]">
+      <div className=" row __sm:mt-[200px] lg:mt-[100px] ">
+        <div className="row text-2xl  mt-4">
+          <h1 className="">User List</h1>
+        </div>
         <div className="col">
           {isLoading === "loading" ? (
             <LoadingSpinner />
@@ -32,7 +32,10 @@ function UserList() {
               <div className="text-white flex  justify-center row">
                 {userList.map((user, index) => {
                   return (
-                    <div className="col-12 col-md-4 border text-center border-white rounded-lg m-2 p-2">
+                    <div
+                      key={user.id}
+                      className="col-12 col-md-4 border text-center border-white rounded-lg m-2 p-2"
+                    >
                       <p className="capitalize">
                         <span>Name: </span>
                         {user.name} {user.lastName}

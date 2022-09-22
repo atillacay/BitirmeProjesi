@@ -7,12 +7,12 @@ import { logout } from "../../features/loginLogoutSlice";
 import logo from "../../logo.svg";
 import { loggedInUser } from "../../features/userSlice";
 
-function Navigation() {
+function Navigation(props) {
   const user = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
-  const [navbar, setNavbar] = useState(false);
+
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -37,9 +37,9 @@ function Navigation() {
               <div className="md:hidden">
                 <button
                   className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
-                  onClick={() => setNavbar(!navbar)}
+                  onClick={() => props.setNavbar(!props.navbar)}
                 >
-                  {navbar ? (
+                  {props.navbar ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-6 h-6 text-white"
@@ -75,29 +75,38 @@ function Navigation() {
           <div>
             <div
               className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-                navbar ? "block" : "hidden"
+                props.navbar ? "block" : "hidden"
               }`}
             >
               <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                 {user.isAuthenticated && (
                   <>
                     <li className="text-white hover:text-indigo-200">
-                      <Link to="/">Doc Management</Link>
+                      <Link onClick={() => props.setNavbar(false)} to="/">
+                        Doc Management
+                      </Link>
                     </li>
                     <Link
+                      onClick={() => props.setNavbar(false)}
                       className="block lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-10"
                       to="/users"
                     >
                       Users
                     </Link>
                     <Link
+                      onClick={() => props.setNavbar(false)}
                       className="block  lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-10"
                       to="/profile"
                     >
                       Profile
                     </Link>
                     <li className="text-white hover:text-indigo-200">
-                      <Link to="/aboutus">About Us</Link>
+                      <Link
+                        onClick={() => props.setNavbar(false)}
+                        to="/aboutus"
+                      >
+                        About Us
+                      </Link>
                     </li>
                   </>
                 )}

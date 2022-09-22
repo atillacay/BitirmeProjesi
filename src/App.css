@@ -137,11 +137,11 @@ ul {
 /*Responsive Menu*/
 
 @media (max-width:997px) {
-  .__sm\:mt-\[100px\] {
-    margin-top: 100px;
+  .__sm\:mt-\[200px\] {
+    margin-top: 200px;
 }
 }
-@media (max-width:374px) {
+@media (min-width:374px) {
   .__lg\:mt-\[100px\] {
     margin-top: 100px;
 }
