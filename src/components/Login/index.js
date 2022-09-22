@@ -1,20 +1,29 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../features/loginLogoutSlice";
 import { LockClosedIcon } from "@heroicons/react/solid";
+import logo from "../../logo.svg";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function Login() {
+  const { error } = useSelector((state) => state.auth);
+  const [loginErr, setLoginErr] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     const loginData = {
       email: e.target["email"].value,
       password: e.target["password"].value,
     };
-    await dispatch(login(loginData)).unwrap();
+    dispatch(login(loginData)).unwrap();
+    if (error == "Rejected") {
+      setLoginErr(true);
+      return;
+    }
     navigate("/");
   };
 
@@ -64,6 +73,7 @@ function Login() {
                     placeholder="Password"
                   />
                 </div>
+                <span>{loginErr ? "login failed" : ""}</span>
               </div>
 
               <div className="flex items-center justify-between">
@@ -72,15 +82,21 @@ function Login() {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    className="h-4 w-4  rounded"
+                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                   />
-                  <label htmlFor="remember-me" className="ml-2 block text-sm ">
+                  <label
+                    htmlFor="remember-me"
+                    className="ml-2 block text-sm text-indigo-600 hover:text-indigo-500"
+                  >
                     Remember me
                   </label>
                 </div>
 
                 <div className="text-sm">
-                  <a href="/forgotpassword" className="font-medium ">
+                  <a
+                    href="/forgotpassword"
+                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                  >
                     Forgot your password?
                   </a>
                 </div>
@@ -89,10 +105,13 @@ function Login() {
               <div>
                 <button
                   type="submit"
-                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                    <LockClosedIcon className="h-5 w-5" aria-hidden="true" />
+                    <LockClosedIcon
+                      className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                      aria-hidden="true"
+                    />
                   </span>
                   Sign in
                 </button>

@@ -26,12 +26,12 @@ function SingleDoc(props) {
   return (
     <>
       {/* "react-doc-viewer": "^0.1.5", */}
-      <div className="doc-viewer mt-5">
+      <div className="doc-viewer mt-36">
         {docState ? <ApproveDoc name={props.path} /> : ""}
         <DocViewer
           pluginRenderers={DocViewerRenderers}
           documents={docs}
-          style={{ width: "75vw", height: "75vh" }}
+          style={{ width: "100vw", height: "75vh" }}
           config={{
             header: {
               disableHeader: true,

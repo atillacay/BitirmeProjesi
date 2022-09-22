@@ -18,8 +18,8 @@ function Users() {
   }, []);
 
   return (
-    <div className=" container min-h-screen -mt-[75px] lg:pt-[100px]">
-      <div className="row">
+    <div className=" container min-h-screen -mt-[75px] lg:pt-[100px] ">
+      <div className="row ">
         <div className="col">
           <h1>Users</h1>
           <ul>

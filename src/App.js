@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import Footer from "./components/Footer";
 import ForgotPass from "./components/ForgotPass";
 import ChangePassword from "./components/ChangePass";
+import AboutUs from "./components/AboutUs";
 
 function App() {
   const docs = useSelector((state) => state.loggedInUser.receivedDocs);
@@ -82,6 +83,14 @@ function App() {
                 element={
                   <RequireAuth redirectTo={"/login"}>
                     <SingleUser />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/aboutus"
+                element={
+                  <RequireAuth redirectTo={"/login"}>
+                    <AboutUs />
                   </RequireAuth>
                 }
               />

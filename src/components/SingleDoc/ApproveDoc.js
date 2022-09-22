@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { approveDoc } from "../../features/documentSlice";
@@ -31,13 +32,13 @@ function ApproveDoc(props) {
       <label className="text-white" htmlFor="approveDoc">
         I read and understood{" "}
       </label>
-      <button
+      <Button
         className="approve-btn btn-sm"
         disabled={isApproved ? false : true}
         onClick={approveDocs}
       >
         Approve
-      </button>
+      </Button>
       <Link className={toggleBtn ? "visible" : "invisible"} to="/">
         Back
       </Link>

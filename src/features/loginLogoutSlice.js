@@ -37,10 +37,11 @@ export const logout = createAsyncThunk("users/logout", async (thunkAPI) => {
 });
 
 const initialState = {
-  name: "",
+  name: "guest",
   isLoading: "idle",
   isAuthenticated: false,
   "auth-token": "",
+  error: null,
 };
 
 export const userLoginSlice = createSlice({
@@ -49,7 +50,7 @@ export const userLoginSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(login.pending, (state) => {
-      state.name = "";
+      state.name = "guest";
       state.isLoading = "loading";
       state.isAuthenticated = false;
       state["auth-token"] = "";
@@ -66,7 +67,7 @@ export const userLoginSlice = createSlice({
       state.error = action.error.message;
     });
     builder.addCase(logout.fulfilled, (state, action) => {
-      state.name = "";
+      state.name = "guest";
       state.isLoading = "idle";
       state.isAuthenticated = false;
       state["auth-token"] = "";

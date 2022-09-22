@@ -30,7 +30,6 @@ ul {
 .logo {
   width: 50px;
   height: 50px;
-  margin: auto;
 }
 .mobile-menu a {
   text-decoration: none;
@@ -75,9 +74,7 @@ ul {
   height: 100%;
   margin-bottom: 25px;
 }
-.card-body h6{
-  margin-top: 10px;
-}
+
 .add-doc {
   display: inline-block;
   margin:auto;
@@ -135,4 +132,39 @@ ul {
 }
 .modal-content{
   border: 1px solid #E71D36;
+}
+
+/*Responsive Menu*/
+
+@media (max-width:997px) {
+  .__sm\:mt-\[100px\] {
+    margin-top: 100px;
+}
+}
+@media (max-width:374px) {
+  .__lg\:mt-\[100px\] {
+    margin-top: 100px;
+}
+}
+/*Uploaded Docs sm size*/
+@media (max-width:650px) {
+  .__sm-col-sm-12{
+    width:100%;
+  }
+}
+@media (min-width: 300px) {
+  .sm\:m-2 {
+      margin: 8px;
+  }
+}
+/*recived doc notice*/
+@media (max-width:650px) {
+  .__sm\:m-auto{
+    margin: auto;
+  }
+}
+@media (max-width: 640px) {
+  .sm\:justify-center {
+      justify-content: center;
+  }
 }

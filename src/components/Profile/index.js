@@ -50,16 +50,16 @@ function Profile() {
   };
 
   return (
-    <div className="container min-h-screen -mt-[75px] lg:pt-[100px]">
+    <div className="container min-h-screen __sm:mt-[200px] ">
       <div className="row">
         <div className="col-sm-12">
           {profileData.isLoading === "loading" ? (
             <LoadingSpinner />
           ) : (
-            <div className="row profile profile-page">
-              <div className="col-sm-4 col-md-4">
-                <div className="">
-                  <h5>Profile Info</h5>
+            <div className="row ">
+              <div className="col-sm-12 col-md-4 flex justify-center text-center">
+                <div className="p-2">
+                  <h5 className="text-2xl mb-2 ">Profile Info</h5>
                   <p>
                     Name: <span>{profileData.name}</span>
                   </p>
@@ -77,11 +77,12 @@ function Profile() {
                   </p>
                 </div>
               </div>
-              <div className="col-sm-4 col-md-4">
-                <div className="">
-                  <h5>Uploaded Docs</h5>
+              <div className="col-sm-12 col-md-4 flex justify-center text-center">
+                <div className="p-2">
+                  <h5 className="text-2xl mb-2 ">Uploaded Docs</h5>
                   <p>
-                    Owned Docs: <span>{ownedDocs ? ownedDocs.length : ""}</span>
+                    Owned Docs:{""}
+                    <span>{ownedDocs ? ownedDocs.length : ""}</span>
                   </p>
                   <p>
                     Shared With:{" "}
@@ -96,9 +97,9 @@ function Profile() {
                 </div>
               </div>
 
-              <div className="col-sm-4 col-md-4">
-                <div className="">
-                  <h5>Received Docs</h5>
+              <div className="col-sm-12 col-md-4 flex justify-center text-center">
+                <div className="p-2">
+                  <h5 className="text-2xl mb-2 ">Received Docs</h5>
                   <p>
                     Total:{" "}
                     <span>{receivedDocs ? receivedDocs.length : ""}</span>
@@ -133,11 +134,11 @@ function Profile() {
               <DocDetails docId={showModal} hide={handleHide} />
             </div>
             <h2 className="text-[22px] mt-5">Uploaded Documents</h2>
-            <div className="my-[20px] flex justify-between sm:justify-center md:justify-center flex-wrap rounded-lg p-2 shadow-[0_0px_15px_0px_rgba(255,159,28)] mb-5">
+            <div className="my-[20px] p-2 flex justify-between sm:justify-center md:justify-center flex-wrap rounded-lg shadow-[0_0px_15px_0px_rgba(255,159,28)] mb-5">
               {ownedDocs
                 ? ownedDocs.map((doc) => (
                     <div
-                      className="col-lg-3 col-md-4 col-sm-8 m-3 p-3 rounded-lg border border-gray-200 hover:scale-105 hover:shadow-[0_0px_15px_0px_rgba(255,159,28)] dark:bg-gray-800 dark:border-gray-700 text-white"
+                      className="col-lg-3 col-sm-4 __sm-col-sm-12 sm:m-2 p-2 rounded-lg border border-gray-200 hover:scale-105 hover:shadow-[0_0px_15px_0px_rgba(255,159,28)] dark:bg-gray-800 dark:border-gray-700 text-white"
                       key={doc.id}
                     >
                       <Link
@@ -146,9 +147,10 @@ function Profile() {
                           search: `?docId=${doc.id}`,
                         }}
                       >
-                        <button
+                        <Link
+                          to="#"
                           type="button"
-                          className="text-white bg-blue-900 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm py-2.5 text-center inline-flex items-center dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
+                          className="text-white bg-blue-900 font-medium rounded-lg text-sm py-2.5 text-center inline-flex items-center "
                         >
                           <img
                             className="w-10 h-13 ml-2 mr-3"
@@ -156,9 +158,9 @@ function Profile() {
                             alt=""
                           />
                           <span>{doc.name}</span>
-                        </button>
+                        </Link>
                       </Link>
-                      <div className="card-body d-flex flex-column">
+                      <div className="">
                         <h6>Shared with: {doc.DocUsers.length}</h6>
                         <h6>
                           Approved:{" "}

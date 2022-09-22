@@ -19,8 +19,8 @@ function UserList() {
       });
   }, []);
   return (
-    <div className=" container min-h-screen -mt-[75px] lg:pt-[100px]">
-      <div className="row text-2xl  profile">
+    <div className=" container h-screen __sm:mt-[200px] lg:pt-[100px]">
+      <div className="row text-2xl  ">
         <h1 className="">User List</h1>
       </div>
       <div className=" row mt-4 ">
@@ -28,42 +28,44 @@ function UserList() {
           {isLoading === "loading" ? (
             <LoadingSpinner />
           ) : (
-            <table className="usersTable shadow-lg bg-white border-separate over">
-              <thead className="">
-                <tr>
-                  <th>User ID</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th>Department</th>
-                  <th>Role</th>
-                </tr>
-              </thead>
-              <tbody className="">
+            <>
+              <div className="text-white flex  justify-center row">
                 {userList.map((user, index) => {
                   return (
-                    <tr key={index}>
-                      <td>
-                        <Link to={`/users/${user.id}`}>
-                          {" "}
-                          <button
-                            type="button"
-                            className="px-6 py-2.5 bg-pendingDoc font-medium text-xs leading-tight w-100 rounded shadow-md hover:bg-aprovedDoc hover:shadow-lg transition duration-150 ease-in-out"
-                          >
-                            {user.id}
-                          </button>
-                        </Link>
-                      </td>
-                      <td>{user.name}</td>
-                      <td>{user.lastName}</td>
-                      <td>{user.email}</td>
-                      <td>{user.Department.name}</td>
-                      <td>{user.Role.name}</td>
-                    </tr>
+                    <div className="col-12 col-md-4 border text-center border-white rounded-lg m-2 p-2">
+                      <p className="capitalize">
+                        <span>Name: </span>
+                        {user.name} {user.lastName}
+                      </p>
+                      <p>
+                        <span>e-mail: </span>
+                        {user.email}
+                      </p>
+                      <p>
+                        <span>Department: </span>
+                        {user.Department.name}
+                      </p>
+                      <p>
+                        <span>User Role: </span>
+                        {user.Role.name}
+                      </p>
+                      <p>
+                        <span>User Id: </span>
+                        {user.id}
+                      </p>
+                      <Link to={`/users/${user.id}`}>
+                        <button
+                          type="button"
+                          className="px-6 py-2.5 bg-indigo-300 text-koyu font-medium text-sm leading-tight w-50 rounded shadow-md hover:bg-aprovedDoc hover:shadow-lg transition duration-150 ease-in-out"
+                        >
+                          User Details
+                        </button>
+                      </Link>
+                    </div>
                   );
                 })}
-              </tbody>
-            </table>
+              </div>
+            </>
           )}
         </div>
       </div>

@@ -12,6 +12,7 @@ function DocManagement() {
   const myApprovals = useSelector((state) => state.loggedInUser.myApprovals);
   const receivedDocs = useSelector((state) => state.loggedInUser.receivedDocs);
   const myPendings = useSelector((state) => state.loggedInUser.myPendings);
+  console.log(myPendings);
 
   const dispatch = useDispatch();
 
@@ -20,24 +21,26 @@ function DocManagement() {
   }, []);
   return (
     <div className=" container min-h-screen -mt-[75px] lg:pt-[100px]">
-      <div className="row">
+      <div className="row __sm:mt-[200px]">
         <div className="col-sm-12">
           {isLoading === "loading" ? (
             <LoadingSpinner />
           ) : (
-            <div className=" row profile">
-              <h5 className="mb-5 text-3xl">Received Docs</h5>
-              <div className="col-sm-4 col-md-4">
-                <div className="profile-info">
-                  <p>
+            <div className="row">
+              <div className="flex justify-center">
+                <h5 className="mb-5 text-3xl">Received Docs</h5>
+              </div>
+              <div className="col-sm-12 mb-5 col-md-12">
+                <div className="flex justify-center">
+                  <p className="p-3">
                     Total:{" "}
                     <span>{receivedDocs ? receivedDocs.length : ""}</span>
                   </p>
-                  <p>
+                  <p className="p-3">
                     Approved:{" "}
                     <span>{myApprovals ? myApprovals.length : ""}</span>
                   </p>
-                  <p>
+                  <p className="p-3">
                     Pending: <span>{myPendings ? myPendings.length : ""}</span>
                   </p>
                 </div>
@@ -51,7 +54,7 @@ function DocManagement() {
           <div className="text-center">
             <h1 className="text-3xl text-pendingDoc">Pending Documents</h1>
             <div className="my-[20px] flex justify-between sm:justify-center md:justify-center flex-wrap rounded-lg p-2 shadow-[0_0px_15px_0px_rgba(255,159,28)] mb-5">
-              {myPendings &&
+              {myPendings && myPendings.length > 0 ? (
                 myPendings.map((doc) => {
                   return (
                     <div
@@ -85,7 +88,10 @@ function DocManagement() {
                       </Link>
                     </div>
                   );
-                })}
+                })
+              ) : (
+                <p className="__sm:m-auto">No pending documents</p>
+              )}
             </div>
           </div>
         </div>
@@ -95,7 +101,7 @@ function DocManagement() {
           <div className="text-center">
             <h1 className="text-3xl text-aprovedDoc">Approved Documents</h1>
             <div className="my-[20px] flex justify-between sm:justify-center md:justify-center flex-wrap rounded-lg p-2 shadow-[0_0px_15px_0px_rgba(46,196,182)] mb-5">
-              {myApprovals &&
+              {myPendings && myApprovals.length > 0 ? (
                 myApprovals.map((doc) => {
                   return (
                     <div
@@ -129,7 +135,10 @@ function DocManagement() {
                       </Link>
                     </div>
                   );
-                })}
+                })
+              ) : (
+                <p className="__sm:m-auto">No approved documents</p>
+              )}
             </div>
           </div>
         </div>
