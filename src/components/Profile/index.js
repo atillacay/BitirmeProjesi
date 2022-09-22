@@ -50,7 +50,7 @@ function Profile() {
   };
 
   return (
-    <div className="container h-screen __lg:mt-[100px] __sm:mt-[200px] ">
+    <div className="container min-h-screen __lg:mt-[100px] __sm:mt-[200px] ">
       <div className="row">
         <div className="col-sm-12">
           {profileData.isLoading === "loading" ? (
