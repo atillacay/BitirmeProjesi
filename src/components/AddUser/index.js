@@ -145,12 +145,12 @@ function AddUser() {
                       <div className="my-2 flex justify-between ">
                         <label
                           htmlFor="email-address"
-                          className="text-gray-300 p-2 sm:text-sm"
+                          className="text-gray-300 p-2 text-sm"
                         >
                           Department
                         </label>
                         <select
-                          className="text-koyu"
+                          className="text-koyu text-sm p-1"
                           name="department"
                           id="department"
                         >
