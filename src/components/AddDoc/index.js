@@ -89,9 +89,9 @@ function AddDoc() {
                       aria-hidden="true"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
@@ -150,28 +150,26 @@ function AddDoc() {
                     </h6>
                     <div className="userList">
                       {users.map((user) => (
-                        <>
-                          <div
-                            className="flex items-center mb-4"
-                            key={user.id}
-                            id="mailList"
+                        <div
+                          className="flex items-center mb-4"
+                          key={user.id}
+                          id="mailList"
+                        >
+                          <input
+                            id={user.id}
+                            type="checkbox"
+                            label={user.email}
+                            name="email"
+                            value={user.email}
+                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            htmlFor="checkbox-2"
+                            className="ml-2 text-sm font-medium text-white dark:text-gray-300"
                           >
-                            <input
-                              id={user.id}
-                              type="checkbox"
-                              label={user.email}
-                              name="email"
-                              value={user.email}
-                              className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                            <label
-                              for="checkbox-2"
-                              className="ml-2 text-sm font-medium text-white dark:text-gray-300"
-                            >
-                              {user.email}
-                            </label>
-                          </div>
-                        </>
+                            {user.email}
+                          </label>
+                        </div>
                       ))}
                     </div>
 
