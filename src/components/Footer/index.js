@@ -1,11 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { loggedInUser } from "../../features/userSlice";
 
 import logo from "../../logo.svg";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   const user = useSelector((state) => state.auth);
+  const { role } = useSelector((state) => state.loggedInUser);
 
   return (
     <>
@@ -26,18 +28,24 @@ const Footer = () => {
                       <li className="text-white hover:text-indigo-200">
                         <Link to="/">Doc Management</Link>
                       </li>
-                      <Link
-                        className="block lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-10"
-                        to="/users"
-                      >
-                        Users
-                      </Link>
-                      <Link
-                        className="block  lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-10"
-                        to="/profile"
-                      >
-                        Profile
-                      </Link>
+                      {role === "user" ? (
+                        ""
+                      ) : (
+                        <>
+                          <Link
+                            className="block lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-10"
+                            to="/users"
+                          >
+                            Users
+                          </Link>
+                          <Link
+                            className="block  lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-10"
+                            to="/profile"
+                          >
+                            Profile
+                          </Link>
+                        </>
+                      )}
                       <li className="text-white hover:text-indigo-200">
                         <Link to="/aboutus">About Us</Link>
                       </li>

@@ -24,6 +24,16 @@ ul {
 .loginForm {
   max-width: 500px;
 }
+#adduser input{
+  background-color: transparent;
+  border: none;
+  color: #fff
+}
+#editUser input{
+  background-color: transparent;
+  border: none;
+  color: #fff
+}
 /**
 * Navbar
 */
@@ -166,5 +176,12 @@ ul {
 @media (max-width: 640px) {
   .sm\:justify-center {
       justify-content: center;
+  }
+}
+/*SingleUser Responsive*/
+@media (max-width: 374px) {
+  .__md\:text-xs {
+      font-size: 0.75rem/* 12px */;
+      line-height: 1rem/* 16px */;
   }
 }

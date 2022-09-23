@@ -9,13 +9,10 @@ import { loggedInUser } from "../../features/userSlice";
 
 function Navigation(props) {
   const user = useSelector((state) => state.auth);
+  const { role } = useSelector((state) => state.loggedInUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
 
   const handleLogout = async () => {
     dispatch(logout());
@@ -86,20 +83,26 @@ function Navigation(props) {
                         Doc Management
                       </Link>
                     </li>
-                    <Link
-                      onClick={() => props.setNavbar(false)}
-                      className="block lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-10"
-                      to="/users"
-                    >
-                      Users
-                    </Link>
-                    <Link
-                      onClick={() => props.setNavbar(false)}
-                      className="block  lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-10"
-                      to="/profile"
-                    >
-                      Profile
-                    </Link>
+                    {role === "user" ? (
+                      ""
+                    ) : (
+                      <>
+                        <Link
+                          onClick={() => props.setNavbar(false)}
+                          className="block lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-10"
+                          to="/users"
+                        >
+                          Users
+                        </Link>
+                        <Link
+                          onClick={() => props.setNavbar(false)}
+                          className="block  lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-10"
+                          to="/profile"
+                        >
+                          Profile
+                        </Link>
+                      </>
+                    )}
                     <li className="text-white hover:text-indigo-200">
                       <Link
                         onClick={() => props.setNavbar(false)}

@@ -36,13 +36,13 @@ function SingleUser() {
 
   console.log(approveDocs);
   return (
-    <div className="container">
-      <div className="row">
+    <div className="container h-screen">
+      <div className="row ">
         <div>
           {userDetails.isLoading === "loading" ? (
             <LoadingSpinner />
           ) : (
-            <div className="row text-xs __sm:mt-[200px]">
+            <div className="row __md:text-xs  __lg:mt-[100px] __sm:mt-[200px] ">
               <div className="col-6">
                 <h5 className="underline">Profile Info</h5>
                 <p>
@@ -122,7 +122,7 @@ function SingleUser() {
         </div>
       </div>
       <div className="row">
-        <dic classNamecol>
+        <div className="col">
           <div className="text-center text-xs">
             <h6>Approved Docs</h6>
             <div className="my-[20px] flex justify-between sm:justify-center md:justify-center flex-wrap rounded-lg p-2 shadow-[0_0px_15px_0px_rgba(46,196,182)] mb-5">
@@ -159,7 +159,7 @@ function SingleUser() {
                 : ""}
             </div>
           </div>
-        </dic>
+        </div>
       </div>
     </div>
   );

@@ -20,7 +20,73 @@ export const getUsers = createAsyncThunk(
     }
   }
 );
-
+/** Add new User */
+export const addUser = createAsyncThunk(
+  "usersList/addUser",
+  async (userData, thunkAPI) => {
+    const token = localStorage.getItem("auth-token");
+    try {
+      const response = await axios({
+        method: "POST",
+        url: `${baseUrl}/users/register`,
+        data: userData,
+        headers: {
+          "auth-token": token,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message });
+    }
+  }
+);
+/** Delete user */
+export const deleteUser = createAsyncThunk(
+  "usersList/deleteUser",
+  async (userId, thunkAPI) => {
+    const token = localStorage.getItem("auth-token");
+    try {
+      const response = await axios({
+        method: "DELETE",
+        url: `${baseUrl}/users/delete`,
+        data: userId,
+        headers: {
+          "auth-token": token,
+        },
+      });
+      return await response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message });
+    }
+  }
+);
+/** Edit user */
+export const editUser = createAsyncThunk(
+  "usersList/editUser",
+  async (userData, thunkAPI) => {
+    const token = localStorage.getItem("auth-token");
+    const updateData = {
+      name: userData.name,
+      lastName: userData.lastName,
+      email: userData.email,
+      department: userData.department,
+      role: userData.role,
+    };
+    try {
+      const response = await axios({
+        method: "PUT",
+        url: `${baseUrl}/users/user/${userData.userId}`,
+        data: updateData,
+        headers: {
+          "auth-token": token,
+        },
+      });
+      return await response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message });
+    }
+  }
+);
 export const usersSlice = createSlice({
   name: "list",
   initialState: {
@@ -39,6 +105,13 @@ export const usersSlice = createSlice({
       state.loading = "loaded";
     });
     builder.addCase(getUsers.rejected, (state, action) => {
+      state.loading = "error";
+      state.error = action.error.message;
+    });
+    builder.addCase(addUser.pending, (state) => {
+      state.loading = "loading";
+    });
+    builder.addCase(addUser.rejected, (state, action) => {
       state.loading = "error";
       state.error = action.error.message;
     });

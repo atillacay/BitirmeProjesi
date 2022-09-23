@@ -19,12 +19,12 @@ function Login() {
       email: e.target["email"].value,
       password: e.target["password"].value,
     };
-    dispatch(login(loginData)).unwrap();
-    if (error == "Rejected") {
-      setLoginErr(true);
-      return;
-    }
-    navigate("/");
+    dispatch(login(loginData))
+      .unwrap()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => setLoginErr(true));
   };
 
   return (
@@ -73,23 +73,18 @@ function Login() {
                     placeholder="Password"
                   />
                 </div>
-                <span>{loginErr ? "login failed" : ""}</span>
               </div>
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                  />
-                  <label
-                    htmlFor="remember-me"
-                    className="ml-2 block text-sm text-indigo-600 hover:text-indigo-500"
-                  >
-                    Remember me
-                  </label>
+                  {loginErr ? (
+                    <span className="text-logoColor">
+                      {" "}
+                      Invalid Password or E-mail{" "}
+                    </span>
+                  ) : (
+                    ""
+                  )}
                 </div>
 
                 <div className="text-sm">
